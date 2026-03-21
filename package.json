@@ -1,0 +1,38 @@
+{
+  "name": "es_tax_auto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": ["**/src/__tests__/**/*.test.ts"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dm360z/ES_Tax_Auto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dm360z/ES_Tax_Auto/issues"
+  },
+  "homepage": "https://github.com/dm360z/ES_Tax_Auto#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.5.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3"
+  }
+}
