@@ -1,0 +1,43 @@
+name: Feature
+description: Define a new feature for Copilot to implement
+title: "[Feature] "
+labels: []
+assignees: []
+
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What needs to be built
+      placeholder: Describe the feature clearly
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: What must be true for this to be complete
+      placeholder: |
+        - condition 1
+        - condition 2
+        - condition 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: What must NOT be done
+      placeholder: |
+        - do not add UI
+        - do not change architecture
+        - keep it simple
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Optional additional context
