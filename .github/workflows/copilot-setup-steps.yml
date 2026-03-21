@@ -1,0 +1,23 @@
+name: Copilot Setup Steps
+
+on:
+  workflow_dispatch:
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show repository contents
+        run: ls -la
+
+      - name: Check for package.json
+        run: |
+          if [ -f "package.json" ]; then
+            echo "package.json found"
+          else
+            echo "No package.json yet - skipping app setup"
+          fi
