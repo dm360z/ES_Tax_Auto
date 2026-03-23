@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for agent-spring-glitter-2708 on 2026-03-23T11:52:04+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "repo-misty-sound-8256"
+primary_region = "lhr"
+
+[build]
+
+[env]
+  PORT = "8080"
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 1024
+
+[[processes]]
+  type = "app"
+  command = "python /app/main.py"
