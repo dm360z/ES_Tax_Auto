@@ -29,6 +29,14 @@ def fetch_instructions():
 
 while True:
     instructions = fetch_instructions()
+
+    now = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
+
+    print("----- AGENT CYCLE START -----", flush=True)
+    print(f"UTC time: {now}", flush=True)
     print("instruction fetch result:", flush=True)
     print(instructions, flush=True)
+    print("action: no action taken", flush=True)
+    print("----- AGENT CYCLE END -----", flush=True)
+
     time.sleep(300)
