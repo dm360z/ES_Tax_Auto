@@ -26,6 +26,30 @@ def fetch_instructions():
         return response.text[:2000]
     except Exception as e:
         return f"Failed to fetch instructions: {e}"
+    
+    def fetch_github_issues():
+    token = os.getenv("GITHUB_TOKEN")
+    if not token:
+        return "No GITHUB_TOKEN"
+
+    try:
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+        }
+        url = "https://api.github.com/repos/dm360z/ES_Tax_Auto/issues"
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+
+        issues = response.json()
+        if not issues:
+            return "No open issues"
+
+        titles = [f"- {issue['title']}" for issue in issues if "pull_request" not in issue]
+        return "\n".join(titles[:10])
+
+    except Exception as e:
+        return f"Failed to fetch issues: {e}"
 
 while True:
     instructions = fetch_instructions()
