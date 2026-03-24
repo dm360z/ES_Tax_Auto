@@ -64,7 +64,15 @@ while True:
     print(f"UTC time: {now}", flush=True)
     print("instruction fetch result:", flush=True)
     print(instructions, flush=True)
-    print("action: no action taken", flush=True)
+    
+    if "FETCH_ISSUES" in instructions:
+        print("action: fetching GitHub issues", flush=True)
+        issues = fetch_github_issues()
+        print("GitHub issues:", flush=True)
+        print(issues, flush=True)
+    else:
+        print("action: no action taken", flush=True)
+        
     print("----- AGENT CYCLE END -----", flush=True)
 
     time.sleep(300)
