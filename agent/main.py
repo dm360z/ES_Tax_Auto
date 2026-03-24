@@ -26,8 +26,8 @@ def fetch_instructions():
         return response.text[:2000]
     except Exception as e:
         return f"Failed to fetch instructions: {e}"
-    
-    def fetch_github_issues():
+
+def fetch_github_issues():
     token = os.getenv("GITHUB_TOKEN")
     if not token:
         return "No GITHUB_TOKEN"
@@ -36,6 +36,7 @@ def fetch_instructions():
         headers = {
             "Authorization": f"Bearer {token}",
             "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
         }
         url = "https://api.github.com/repos/dm360z/ES_Tax_Auto/issues"
         response = requests.get(url, headers=headers, timeout=30)
@@ -45,7 +46,11 @@ def fetch_instructions():
         if not issues:
             return "No open issues"
 
-        titles = [f"- {issue['title']}" for issue in issues if "pull_request" not in issue]
+        titles = [
+            f"- {issue['title']}"
+            for issue in issues
+            if "pull_request" not in issue
+        ]
         return "\n".join(titles[:10])
 
     except Exception as e:
@@ -53,7 +58,6 @@ def fetch_instructions():
 
 while True:
     instructions = fetch_instructions()
-
     now = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
 
     print("----- AGENT CYCLE START -----", flush=True)
